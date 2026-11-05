@@ -1,35 +1,100 @@
 @extends('layouts.app')
 
-@section('title', 'Admin Dashboard | CodeArena')
+@section('title', 'Admin Dashboard')
 
 @section('content')
+<div class="container py-4">
 
-<div class="mb-4">
-    <h2 class="fw-bold">Administrator Dashboard</h2>
-
-    <p class="text-muted">
-        Welcome to the CodeArena administration panel.
-    </p>
-</div>
-
-<div class="card shadow-sm border-0">
-    <div class="card-body">
-
-        <h5 class="card-title">Welcome, {{ auth()->user()->name }}</h5>
-
-        <p class="text-muted mb-0">
-            You are logged in as a CodeArena administrator.
+    <div class="mb-4">
+        <h2>Administrator Dashboard</h2>
+        <p class="text-muted">
+            Manage your institution's CodeArena platform.
         </p>
+    </div>
+
+    <div class="row g-4">
+
+        {{-- Institution Settings --}}
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Institution Settings</h5>
+                    <p class="card-text text-muted">
+                        Manage institution information and contact details.
+                    </p>
+                    <a href="{{ route('admin.settings.edit') }}"
+                       class="btn btn-primary">
+                        Manage Settings
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        {{-- Contests --}}
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Contests</h5>
+                    <p class="card-text text-muted">
+                        Create and manage programming contests.
+                    </p>
+                    <span class="badge bg-secondary">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+
+        {{-- Problems --}}
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Problems</h5>
+                    <p class="card-text text-muted">
+                        Manage programming problems and test cases.
+                    </p>
+                    <span class="badge bg-secondary">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+
+        {{-- Registrations --}}
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Registrations</h5>
+                    <p class="card-text text-muted">
+                        Review contestant and team registrations.
+                    </p>
+                    <span class="badge bg-secondary">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+
+        {{-- Teams --}}
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Teams</h5>
+                    <p class="card-text text-muted">
+                        Manage approved teams and their accounts.
+                    </p>
+                    <span class="badge bg-secondary">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+
+        {{-- Reports --}}
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Reports</h5>
+                    <p class="card-text text-muted">
+                        View contest statistics and administrative reports.
+                    </p>
+                    <span class="badge bg-secondary">Coming Soon</span>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>
-
-<form method="POST" action="{{ route('admin.logout') }}" class="mt-3">
-    @csrf
-
-    <button type="submit" class="btn btn-outline-danger">
-        Logout
-    </button>
-</form>
-
 @endsection

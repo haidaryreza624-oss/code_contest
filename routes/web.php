@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\InstitutionSettingController;
+
 Route::get('/', function () {
     return view('home');
 });
@@ -21,5 +23,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     Route::post('/logout', [AuthController::class, 'logout'])
         ->name('logout');
-
+    Route::get('/settings', [InstitutionSettingController::class, 'edit'])
+    ->name('settings.edit');
+    Route::put('/settings', [InstitutionSettingController::class, 'update'])
+    ->name('settings.update');
 });
