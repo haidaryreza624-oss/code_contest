@@ -19,6 +19,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::define('manage-administrators', function ($user) {
+            return $user->is_admin === true;
+        });
+
+        Gate::define('manage-institution-settings', function ($user) {
+            return $user->is_admin === true;
+        });
     }
 }

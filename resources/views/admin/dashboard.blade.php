@@ -110,6 +110,22 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Audit Logs</h5>
+
+                    <p class="card-text text-muted">
+                        Review the history of administrative activities.
+                    </p>
+
+                    <a href="{{ route('admin.audit-logs.index') }}"
+                    class="btn btn-primary">
+                        View Audit Logs
+                    </a>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>

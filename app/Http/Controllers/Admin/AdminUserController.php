@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdminAuditLog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -32,6 +33,12 @@ class AdminUserController extends Controller
         $admin->password = Hash::make($validated['password']);
         $admin->is_admin = true;
         $admin->save();
+        AdminAuditLog::record(
+            'administrator_created',
+            'User',
+            $admin->id,
+            'Created administrator account: ' . $admin->email
+        );
 
         return redirect()
             ->route('admin.admin-users.index')

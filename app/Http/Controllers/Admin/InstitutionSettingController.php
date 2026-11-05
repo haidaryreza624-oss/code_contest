@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\InstitutionSetting;
-
+use App\Models\AdminAuditLog;
 class InstitutionSettingController extends Controller
 {
     public function edit(){
@@ -23,6 +23,12 @@ class InstitutionSettingController extends Controller
         InstitutionSetting::updateOrCreate(
             ['id' => 1],
             $validated
+        );
+        AdminAuditLog::record(
+            'institution_settings_updated',
+            'InstitutionSetting',
+            1,
+            'Updated institution information.'
         );
         return redirect()
             ->route('admin.settings.edit')

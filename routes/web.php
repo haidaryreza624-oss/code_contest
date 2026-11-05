@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\InstitutionSettingController;
 use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\AdminAuditLogController;
 Route::get('/', function () {
     return view('home');
 });
@@ -38,4 +39,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::post('/administrators', [AdminUserController::class, 'store'])
     ->middleware('can:manage-administrators')
     ->name('admin-users.store');
+    Route::get('/audit-logs', [AdminAuditLogController::class, 'index'])
+    ->middleware('can:manage-administrators')
+    ->name('audit-logs.index');
 });
