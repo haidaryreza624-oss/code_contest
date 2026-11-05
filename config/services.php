@@ -34,5 +34,8 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    'judge'=>[
+        'url'=>env('JUDGE_ENGINE_URL','localhost:9000'),
+    ],
 
 ];
