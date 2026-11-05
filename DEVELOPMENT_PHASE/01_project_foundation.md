@@ -44,9 +44,9 @@ Create the Laravel application and establish the technical foundation for CodeAr
 - [x] Laravel application starts successfully.
 - [x] Database connection works.
 - [x] Blade and Bootstrap layout is available.
-- [ ] Administrator can log in and log out.
-- [ ] Email configuration is tested.
-- [ ] A queued job runs successfully.
-- [ ] Private file storage is configured.
-- [ ] `JudgeService` can reach the configured FastAPI service.
-- [ ] Environment configuration is documented.
+- [x] Administrator can log in and log out.
+- [x] Email configuration is tested.
+- [x] A queued job runs successfully.
+- [x] Private file storage is configured.
+- [x] `JudgeService` can reach the configured FastAPI service.
+- [x] Environment configuration is documented.
