@@ -41,9 +41,9 @@ Create the Laravel application and establish the technical foundation for CodeAr
 - Do not allow the browser to communicate directly with the judge engine.
 
 ## Completion checklist
-- [ ] Laravel application starts successfully.
-- [ ] Database connection works.
-- [ ] Blade and Bootstrap layout is available.
+- [x] Laravel application starts successfully.
+- [x] Database connection works.
+- [x] Blade and Bootstrap layout is available.
 - [ ] Administrator can log in and log out.
 - [ ] Email configuration is tested.
 - [ ] A queued job runs successfully.
