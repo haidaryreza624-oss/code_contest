@@ -31,9 +31,9 @@ Provide secure administrator access and the basic institution-level management t
 - A coach does not receive a CodeArena login account under the current design.
 
 ## Completion checklist
-- [ ] Administrator authentication works.
-- [ ] Administrative routes are protected.
-- [ ] Authorization rules are enforced server-side.
-- [ ] Institution settings can be viewed and updated.
-- [ ] Important administrative actions are logged.
-- [ ] The dashboard links to the main management sections.
+- [x] Administrator authentication works.
+- [x] Administrative routes are protected.
+- [x] Authorization rules are enforced server-side.
+- [x] Institution settings can be viewed and updated.
+- [x] Important administrative actions are logged.
+- [x] The dashboard links to the main management sections.
