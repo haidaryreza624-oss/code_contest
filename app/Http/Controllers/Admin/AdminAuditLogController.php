@@ -12,7 +12,7 @@ class AdminAuditLogController extends Controller
     {
         $logs = AdminAuditLog::with('admin')
             ->latest()
-            ->paginate(15);
+            ->paginate(1);
 
         return view('admin.audit-logs.index', compact('logs'));
     }
