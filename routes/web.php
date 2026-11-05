@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\InstitutionSettingController;
-
+use App\Http\Controllers\Admin\AdminUserController;
 Route::get('/', function () {
     return view('home');
 });
@@ -27,4 +27,10 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     ->name('settings.edit');
     Route::put('/settings', [InstitutionSettingController::class, 'update'])
     ->name('settings.update');
+    Route::get('/administrators', [AdminUserController::class, 'index'])
+    ->name('admin-users.index');
+    Route::get('/administrators/create', [AdminUserController::class, 'create'])
+    ->name('admin-users.create');
+    Route::post('/administrators', [AdminUserController::class, 'store'])
+    ->name('admin-users.store');
 });

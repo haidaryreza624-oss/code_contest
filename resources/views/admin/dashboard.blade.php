@@ -94,6 +94,22 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Administrators</h5>
+
+                    <p class="card-text text-muted">
+                        Manage administrator accounts and access.
+                    </p>
+
+                    <a href="{{ route('admin.admin-users.index') }}"
+                    class="btn btn-primary">
+                        Manage Administrators
+                    </a>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>
