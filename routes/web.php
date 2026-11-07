@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\InstitutionSettingController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminAuditLogController;
+use App\Http\Controllers\Admin\ProblemController;
+
 Route::get('/', function () {
     return view('home');
 });
@@ -55,5 +57,14 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     ->name('admin-users.store');
     Route::get('/audit-logs', [AdminAuditLogController::class, 'index'])
     ->name('audit-logs.index');
+
+
+
+    Route::get('/problems', [ProblemController::class, 'index'])
+    ->name('problems.index');
+    Route::get('/problems/create', [ProblemController::class, 'create'])
+        ->name('problems.create');
+    Route::post('/problems', [ProblemController::class, 'store'])
+        ->name('problems.store');
 
 });

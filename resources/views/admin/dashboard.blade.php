@@ -55,15 +55,19 @@
             </div>
         </div>
 
-        {{-- Problems --}}
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm">
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm h-100">
                 <div class="card-body">
-                    <h5 class="card-title">Problems</h5>
+                    <h5 class="card-title">Problem Management</h5>
+
                     <p class="card-text text-muted">
-                        Manage programming problems and test cases.
+                        Create and manage programming problems and test cases.
                     </p>
-                    <span class="badge bg-secondary">Coming Soon</span>
+
+                    <a href="{{ route('admin.problems.index') }}"
+                    class="btn btn-primary">
+                        Manage Problems
+                    </a>
                 </div>
             </div>
         </div>
