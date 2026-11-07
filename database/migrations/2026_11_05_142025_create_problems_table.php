@@ -32,7 +32,7 @@ return new class extends Migration
 
             $table->string('status')->default('draft');
 
-            $table->timestamps();
+
             $table->timestamps();
         });
     }

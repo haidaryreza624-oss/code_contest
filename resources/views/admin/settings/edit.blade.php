@@ -70,10 +70,12 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
-
-                <button type="submit" class="btn btn-primary">
+                @can('manage-institution-settings')
+                    <button type="submit" class="btn btn-primary">
                     Save Settings
-                </button>
+                    </button>
+                @endcan
+
 
             </form>
 

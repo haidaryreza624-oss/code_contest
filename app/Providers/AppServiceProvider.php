@@ -23,11 +23,11 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrapFive();
         Gate::define('manage-administrators', function ($user) {
-            return $user->is_admin === true;
+            return $user->is_super_admin == true;
         });
 
         Gate::define('manage-institution-settings', function ($user) {
-            return $user->is_admin === true;
+            return $user->is_super_admin == true;
         });
     }
 }

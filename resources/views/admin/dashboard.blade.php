@@ -14,7 +14,7 @@
 
     <div class="row g-4">
 
-        {{-- Institution Settings --}}
+    {{-- Institution Settings --}}
         <div class="col-md-4">
             <div class="card h-100 shadow-sm">
                 <div class="card-body">
@@ -22,13 +22,25 @@
                     <p class="card-text text-muted">
                         Manage institution information and contact details.
                     </p>
-                    <a href="{{ route('admin.settings.edit') }}"
+                    @cannot('manage-institution-settings')
+                        <a href="{{ route('admin.settings.edit') }}"
                        class="btn btn-primary">
-                        Manage Settings
+                        Show Settings
                     </a>
+                    @endcannot
+                    @can('manage-institution-settings')
+                        <a href="{{ route('admin.settings.edit') }}"
+                            class="btn btn-primary">
+                                Manage Settings
+                        </a>
+                    @endcan
+
+
                 </div>
             </div>
         </div>
+
+
 
         {{-- Contests --}}
         <div class="col-md-4">
@@ -94,6 +106,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-md-4">
             <div class="card h-100 shadow-sm">
                 <div class="card-body">
@@ -102,14 +115,22 @@
                     <p class="card-text text-muted">
                         Manage administrator accounts and access.
                     </p>
-
-                    <a href="{{ route('admin.admin-users.index') }}"
-                    class="btn btn-primary">
+                    @can('manage-administrators')
+                        <a href="{{ route('admin.admin-users.index') }}"
+                        class="btn btn-primary">
                         Manage Administrators
-                    </a>
+                        </a>
+                    @endcan
+                    @cannot('manage-administrators')
+                        <a href="{{ route('admin.admin-users.index') }}"
+                        class="btn btn-primary">
+                        Show Adminstraters
+                        </a>
+                    @endcan
                 </div>
             </div>
         </div>
+
         <div class="col-md-4">
             <div class="card h-100 shadow-sm">
                 <div class="card-body">

@@ -22,6 +22,24 @@
                         Home
                     </a>
                 </li>
+                @auth
+                    <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/') }}">
+                        {{ auth()->user()['email'] }}
+                    </a>
+                </li>
+                @endauth
+
+
+
+
+
+                <li class="nav-item">
+                    <form action="{{ route('admin.logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Logout</button>
+                    </form>
+                </li>
 
             </ul>
 

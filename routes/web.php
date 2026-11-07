@@ -22,24 +22,38 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         return view('admin.dashboard');
     })->name('dashboard');
 
+
     Route::post('/logout', [AuthController::class, 'logout'])
         ->name('logout');
+
     Route::get('/settings', [InstitutionSettingController::class, 'edit'])
-    ->middleware('can:manage-institution-settings')
     ->name('settings.edit');
     Route::put('/settings', [InstitutionSettingController::class, 'update'])
     ->middleware('can:manage-institution-settings')
     ->name('settings.update');
+
+
     Route::get('/administrators', [AdminUserController::class, 'index'])
-    ->middleware('can:manage-administrators')
     ->name('admin-users.index');
+
     Route::get('/administrators/create', [AdminUserController::class, 'create'])
     ->middleware('can:manage-administrators')
     ->name('admin-users.create');
+
+    Route::get('/administrators/edit/{id}', [AdminUserController::class, 'showUpdate'])
+    ->middleware('can:manage-administrators')
+    ->name('admin-users.showUpdate');
+
+    Route::put('/administrators/edit', [AdminUserController::class, 'update'])
+    ->middleware('can:manage-administrators')
+    ->name('admin-users.update');
+
+
+
     Route::post('/administrators', [AdminUserController::class, 'store'])
     ->middleware('can:manage-administrators')
     ->name('admin-users.store');
     Route::get('/audit-logs', [AdminAuditLogController::class, 'index'])
-    ->middleware('can:manage-administrators')
     ->name('audit-logs.index');
+
 });

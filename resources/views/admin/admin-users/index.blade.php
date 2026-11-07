@@ -10,11 +10,13 @@
             <h2>Administrators</h2>
             <p class="text-muted">Manage CodeArena administrator accounts.</p>
         </div>
-
-        <a href="{{ route('admin.admin-users.create') }}"
+        @can('manage-administrators')
+            <a href="{{ route('admin.admin-users.create') }}"
            class="btn btn-primary">
             Add Administrator
-        </a>
+            </a>
+        @endcan
+
     </div>
 
 
@@ -33,6 +35,10 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Created</th>
+                                @can('manage-administrators')
+                                    <th>Update</th>
+                                @endcan
+
                             </tr>
                         </thead>
 
@@ -43,6 +49,10 @@
                                     <td>{{ $admin->name }}</td>
                                     <td>{{ $admin->email }}</td>
                                     <td>{{ $admin->created_at->format('d M Y') }}</td>
+                                    @can('manage-administrators')
+                                        <td><a href="{{ route('admin.admin-users.showUpdate',$admin->id) }}">Edit</a></td>
+                                    @endcan
+
                                 </tr>
                             @endforeach
                         </tbody>

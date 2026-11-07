@@ -7,6 +7,7 @@ use App\Models\AdminAuditLog;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class AdminUserController extends Controller
 {
@@ -43,6 +44,52 @@ class AdminUserController extends Controller
         return redirect()
             ->route('admin.admin-users.index')
             ->with('success', 'Administrator account created successfully.');
+
+    }
+    public function showUpdate($id)
+    {
+        $user = User::where('id',$id)->latest()->get();
+        $name = $user[0]['name'];
+        $email = $user[0]['email'];
+        $id = $user[0]['id'];
+        return view('admin.admin-users.edit',['name'=>$name,'email'=>$email,'id'=>$id]);
+    }
+    public function deleteAdmin(Request $req)
+    {
+
+
+    }
+    public function update(Request $req)
+    {
+
+        if ($req['password'] != ''){
+            $validated = $req->validate([
+            'password'=>'confirmed|string|min:8',
+            'name' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255',
+            ]);
+        }else{
+            $validated = $req->validate([
+
+            'name' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255',
+            ]);
+        }
+        User::updateOrCreate(
+            ['id' => $req['id']],
+            $validated
+        );
+        AdminAuditLog::record(
+            'Admin Setting Edited',
+            'Admin USer Settings',
+            1,
+            'Updated '.$validated['email'].' information.'
+        );
+        return redirect()
+            ->route('admin.admin-users.index')
+            ->with('success', 'Admin settings updated successfully.');
+
+
 
     }
 }
