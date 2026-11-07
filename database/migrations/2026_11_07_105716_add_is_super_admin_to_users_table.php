@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_super_admin')->default(false);
+            $table->boolean('can_add_users')->default(false);
+            $table->boolean('can_change_settings')->default(false);
         });
     }
 
@@ -22,7 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('is_admin');
+            $table->dropColumn('can_add_users');
+            $table->boolean('can_change_settings')->default(false);
         });
     }
 };
