@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\InstitutionSettingController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminAuditLogController;
 use App\Http\Controllers\Admin\ProblemController;
+use App\Http\Controllers\Admin\ProblemTestCaseController;
 
 Route::get('/', function () {
     return view('home');
@@ -66,5 +67,22 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         ->name('problems.create');
     Route::post('/problems', [ProblemController::class, 'store'])
         ->name('problems.store');
+
+
+    Route::get('/problems/{problem}/test-cases',
+        [ProblemTestCaseController::class, 'index']
+    )->name('problems.test-cases.index');
+
+    Route::post('/problems/{problem}/test-cases',
+        [ProblemTestCaseController::class, 'store']
+    )->name('problems.test-cases.store');
+
+    Route::put('/problems/{problem}/test-cases/{testCase}',
+        [ProblemTestCaseController::class, 'update']
+    )->name('problems.test-cases.update');
+
+    Route::delete('/problems/{problem}/test-cases/{testCase}',
+        [ProblemTestCaseController::class, 'destroy']
+    )->name('problems.test-cases.destroy');
 
 });

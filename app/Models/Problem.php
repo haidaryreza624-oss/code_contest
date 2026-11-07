@@ -24,7 +24,7 @@ class Problem extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function testCase():HasMany
+    public function testCases():HasMany
     {
         return $this->hasMany(ProblemTestCase::class);
     }

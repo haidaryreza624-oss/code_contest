@@ -41,6 +41,7 @@
                             <th>Status</th>
                             <th>Created By</th>
                             <th>Created At</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
 
@@ -77,6 +78,12 @@
 
                                 <td>
                                     {{ $problem->created_at->format('Y-m-d') }}
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.problems.test-cases.index', $problem) }}"
+                                    class="btn btn-sm btn-outline-primary">
+                                        Manage Tests
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
