@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminAuditLogController;
 use App\Http\Controllers\Admin\ProblemController;
 use App\Http\Controllers\Admin\ProblemTestCaseController;
+use App\Http\Controllers\SubmissionController;
 
 Route::get('/', function () {
     return view('home');
@@ -85,5 +86,17 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::delete('/problems/{problem}/test-cases/{testCase}',
         [ProblemTestCaseController::class, 'destroy']
     )->name('problems.test-cases.destroy');
+
+});
+
+
+Route::middleware(['auth'])->group(function () {
+
+    Route::post(
+        '/problems/{slug}/submissions',
+        [SubmissionController::class, 'store']
+    )
+        ->middleware('throttle:5,1')
+        ->name('submissions.store');
 
 });
