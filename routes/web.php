@@ -12,25 +12,20 @@ Route::get('/', function () {
     return view('home');
 });
 
-
-
 Route::get('/problems/{slug}', [ProblemController::class, 'show'])
     ->name('problems.show');
 
-
-
 Route::get('/admin/login', [AuthController::class, 'showLogin'])
     ->name('admin.login');
-
 Route::post('/admin/login', [AuthController::class, 'login'])
     ->middleware('throttle:5,1')
     ->name('admin.login.submit');
+
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
 
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
-
 
     Route::post('/logout', [AuthController::class, 'logout'])
         ->name('logout');
@@ -44,24 +39,20 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     Route::get('/administrators', [AdminUserController::class, 'index'])
     ->name('admin-users.index');
-
     Route::get('/administrators/create', [AdminUserController::class, 'create'])
     ->middleware('can:manage-administrators')
     ->name('admin-users.create');
-
     Route::get('/administrators/edit/{id}', [AdminUserController::class, 'showUpdate'])
     ->middleware('can:manage-administrators')
     ->name('admin-users.showUpdate');
-
     Route::put('/administrators/edit', [AdminUserController::class, 'update'])
     ->middleware('can:manage-administrators')
     ->name('admin-users.update');
-
-
-
     Route::post('/administrators', [AdminUserController::class, 'store'])
     ->middleware('can:manage-administrators')
     ->name('admin-users.store');
+
+
     Route::get('/audit-logs', [AdminAuditLogController::class, 'index'])
     ->name('audit-logs.index');
 

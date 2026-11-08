@@ -32,8 +32,8 @@ A test case should distinguish sample/public cases from hidden cases. Store hidd
 - Do not expose hidden tests in Blade views, JavaScript, API responses, logs visible to teams, or predictable file URLs.
 
 ## Completion checklist
-- [pending] Administrators can create, edit, view, and deactivate problems.
-- [pending] Sample and hidden test cases are distinguished.
-- [pending] Time and memory limits are configurable.
-- [pending] Problem validation detects missing or invalid test data.
-- [pending] Hidden test data is private.
+- [x] Administrators can create, edit, view, and deactivate problems.
+- [x] Sample and hidden test cases are distinguished.
+- [x] Time and memory limits are configurable.
+- [x] Problem validation detects missing or invalid test data.
+- [x] Hidden test data is private.
