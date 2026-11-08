@@ -46,4 +46,8 @@ class User extends Authenticatable
             'is_admin' => 'boolean',
         ];
     }
+    public function submissions()
+    {
+        return $this->hasMany(Submission::class);
+    }
 }

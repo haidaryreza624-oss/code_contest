@@ -28,4 +28,8 @@ class Problem extends Model
     {
         return $this->hasMany(ProblemTestCase::class);
     }
+    public function submissions()
+    {
+        return $this->hasMany(Submission::class);
+    }
 }
