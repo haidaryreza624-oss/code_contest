@@ -17,11 +17,7 @@
         </a>
     </div>
 
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+
 
     @if($problems->isEmpty())
         <div class="alert alert-info">
@@ -51,7 +47,7 @@
                                 <td>{{ $problem->id }}</td>
 
                                 <td>
-                                    <strong>{{ $problem->title }}</strong>
+                                    <a href="{{ route('problems.show',$problem->slug) }}">{{ $problem->title }}</a>
                                 </td>
 
                                 <td>
@@ -84,6 +80,39 @@
                                     class="btn btn-sm btn-outline-primary">
                                         Manage Tests
                                     </a>
+                                </td>
+                                <td>
+                                    <div class="d-flex gap-2">
+
+                                        @if($problem->status === 'draft')
+
+                                            <a href="{{ route('admin.problems.edit', $problem) }}"
+                                            class="btn btn-sm btn-outline-primary">
+                                                Edit
+                                            </a>
+
+                                            <form method="POST"
+                                                action="{{ route('admin.problems.publish', $problem) }}"
+                                                onsubmit="return confirm('Are you sure you want to publish this problem?')">
+
+                                                @csrf
+
+                                                <button type="submit"
+                                                        class="btn btn-sm btn-success">
+                                                    Publish
+                                                </button>
+
+                                            </form>
+
+                                        @else
+
+                                            <span class="badge bg-success">
+                                                Published
+                                            </span>
+
+                                        @endif
+
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

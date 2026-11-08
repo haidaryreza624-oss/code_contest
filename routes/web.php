@@ -13,6 +13,12 @@ Route::get('/', function () {
 });
 
 
+
+Route::get('/problems/{slug}', [ProblemController::class, 'show'])
+    ->name('problems.show');
+
+
+
 Route::get('/admin/login', [AuthController::class, 'showLogin'])
     ->name('admin.login');
 
@@ -67,20 +73,24 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         ->name('problems.create');
     Route::post('/problems', [ProblemController::class, 'store'])
         ->name('problems.store');
+    Route::get('/problems/{problem}/edit', [ProblemController::class, 'edit'])
+    ->name('problems.edit');
+    Route::put('/problems/{problem}', [ProblemController::class, 'update'])
+    ->name('problems.update');
+    Route::post('/problems/{problem}/publish', [ProblemController::class, 'publish'])
+    ->name('problems.publish');
+
 
 
     Route::get('/problems/{problem}/test-cases',
         [ProblemTestCaseController::class, 'index']
     )->name('problems.test-cases.index');
-
     Route::post('/problems/{problem}/test-cases',
         [ProblemTestCaseController::class, 'store']
     )->name('problems.test-cases.store');
-
     Route::put('/problems/{problem}/test-cases/{testCase}',
         [ProblemTestCaseController::class, 'update']
     )->name('problems.test-cases.update');
-
     Route::delete('/problems/{problem}/test-cases/{testCase}',
         [ProblemTestCaseController::class, 'destroy']
     )->name('problems.test-cases.destroy');

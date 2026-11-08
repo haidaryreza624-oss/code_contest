@@ -28,6 +28,7 @@
                         {{ auth()->user()['email'] }}
                     </a>
                 </li>
+
                 @endauth
 
 
